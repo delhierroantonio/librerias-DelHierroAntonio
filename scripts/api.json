@@ -33,5 +33,23 @@
         "id": 6,
         "titulo": "Redux Frames",
         "imagenUrl": "./assets/icons/desktop6.png"
+    },
+    {
+        "precio": 6550,
+        "id": 7,
+        "titulo": "Omnio Tech",
+        "imagenUrl": "./assets/icons/desktop7.png"
+    },
+    {
+        "precio": 9000,
+        "id": 8,
+        "titulo": "Game Master",
+        "imagenUrl": "./assets/icons/fullPc.png"
+    },
+    {
+        "precio": 9000,
+        "id": 9,
+        "titulo": "Meta Box",
+        "imagenUrl": "./assets/icons/mouseAndKeyboard.png"
     }
 ]

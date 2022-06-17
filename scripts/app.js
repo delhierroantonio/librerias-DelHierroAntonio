@@ -5,6 +5,8 @@ const templateCard = document.getElementById('template-card').content;
 const templateCarrito = document.getElementById('template-carrito').content;
 const templateFooter = document.getElementById('template-footer').content;
 const fragment = document.createDocumentFragment();
+const templateBuy = document.getElementById('template-comprar');
+// revisar si debemos usar textContent o no!
 
 let carrito = {};
 
@@ -54,6 +56,16 @@ const pintarCards = data => {
 const addCarrito = (e) => {
     if (e.target.classList.contains('btn-dark')) {
         setCarrito(e.target.parentElement);
+        Toastify({
+            text: "Producto agregado!",
+            duration: 1000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            style: {
+                background: "linear-gradient(to right, #023047, #001219)",
+            },
+        }).showToast();
     }
     // detener eventos heredados de padres
     e.stopPropagation();
@@ -77,7 +89,7 @@ const setCarrito = objeto => {
     }
     mostrarCarrito();
 }
-
+// mostramos los articulos en el carrito
 const mostrarCarrito = () => {
     items.innerHTML = '';
     Object.values(carrito).forEach(producto => {
@@ -130,11 +142,20 @@ const mostrarFooter = () => {
     const comprarProductos = document.getElementById('comprarProductos');
     comprarProductos.addEventListener('click', function () {
         Swal.fire({
-            title: `El total de su compra sera de: $${nPrecio}, por los: ${nCantidad} productos`,
-            text: 'Porfavor confirme su compra!',
-            icon: 'info',
-            confirmButtonText: 'Pagar ahora'
-        })
+                title: `El total de su compra sera de: $${nPrecio}, por los: ${nCantidad} productos`,
+                text: "Precione 'OK' para realizar su pago",
+                icon: "info",
+                buttons: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal.fire("Bien! su compra ha sido realizada con exito", {
+                        icon: "success",
+                    });
+                } else {
+                    swal.fire("Your imaginary file is safe!");
+                }
+            });
     })
 }
 
